@@ -1,6 +1,7 @@
-<h3 align="center">This pipeline is will take the metagenomic short read portions of BALROG-MON and make it its own pipeline. This is still a work in progress.</h3>
+<h3 align="center">This pipeline is will take the metagenomic short read portions of BALROG-MON and make it its own pipeline. This is still a work in progress. Ignore the rest of this readme it has not been updated, and still corresponds to BALROG-MON</h3>
 
 <br />
+
 
 <a name="readme-top"></a>
 
@@ -309,3 +310,5 @@ Edward Bird -  - edwardbirdlab@gmail.com  |  edwardbird@ksu.edu
 [linkedin-url]: https://linkedin.com/in/linkedin_username
 [Nextflow-url]: https://nextflow.io
 [nextflow.io]: https://github.com/nextflow-io/nextflow/workflows/Nextflow%20CI/badge.svg
+
+
