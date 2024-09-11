@@ -1,3 +1,7 @@
+<h3 align="center">This pipeline is will take the metagenomic short read portions of BALROG-MON and make it its own pipeline. This is still a work in progress.</h3>
+
+<br />
+
 <a name="readme-top"></a>
 
 <!-- PROJECT SHIELDS -->
