@@ -10,6 +10,9 @@ include { CARD_DB as CARD_DB } from '../modules/CARD_DB.nf'
 include { AMRFINDER as AMRFINDER } from '../modules/AMRFINDER.nf'
 include { CARD_CONTIG as CARD_CONTIG } from '../modules/CARD_CONTIG.nf'
 include { RESFINDER as RESFINDER } from '../modules/RESFINDER.nf'
+include { AMRFINDER_PARSE as AMRFINDER_PARSE } from '../modules/AMRFINDER_PARSE.nf'
+include { CARD_PARSE as CARD_PARSE } from '../modules/CARD_PARSE.nf'
+include { RESFINDER_PARSE as RESFINDER_PARSE } from '../modules/RESFINDER_PARSE.nf'
 include { HAMRONIZE_AMRFINDER as HAMRONIZE_AMRFINDER } from '../modules/HAMRONIZE_AMRFINDER.nf'
 include { HAMRONIZE_RGI as HAMRONIZE_RGI } from '../modules/HAMRONIZE_RGI.nf'
 include { HAMRONIZE_RESFINDER as HAMRONIZE_RESFINDER } from '../modules/HAMRONIZE_RESFINDER.nf'
@@ -80,13 +83,13 @@ workflow MULTI_AMR {
         HAMRONIZE_SUMMARY(ch_summarize_amr.collect())
 
         ch_amrfinder_collect = AMRFINDER.out.amrfinder_results.collect()
-        AMRFINDER_PARSE(ch_amrfinder_collect, ch_amrfinder_db)
+        //AMRFINDER_PARSE(ch_amrfinder_collect, ch_amrfinder_db)
 
         ch_card_collect = CARD_CONTIG.out.tbout.collect()
-        CARD_PARSE(ch_card_collect)
+        //CARD_PARSE(ch_card_collect)
 
         ch_resfinder_collect = RESFINDER.out.db_hits.collect()
-        RESFINDER_PARSE(ch_resfinder_collect)
+        //RESFINDER_PARSE(ch_resfinder_collect)
 
 
     //emit:
