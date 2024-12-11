@@ -6,8 +6,8 @@ Subworkflow for doanloading of mutiple AMR databases
 
 include { CARD_DB as CARD_DB } from '../modules/CARD_DB.nf'
 include { CARD_READS as CARD_READS } from '../modules/CARD_READS.nf'
-include { HAMRONIZE_RESFINDER_BWT as HAMRONIZE_RESFINDER_BWT } from '../modules/CARD_READS.nf'
-include { HAMRONIZE_SUMMARY as HAMRONIZE_SUMMARY } from '../modules/CARD_READS.nf'
+include { HAMRONIZE_RESFINDER_BWT as HAMRONIZE_RESFINDER_BWT } from '../modules/HAMRONIZE_RESFINDER_BWT.nf'
+include { HAMRONIZE_SUMMARY as HAMRONIZE_SUMMARY } from '../modules/HAMRONIZE_SUMMARY.nf'
 
 
 workflow CARD_READS_ONLY {
