@@ -14,8 +14,8 @@ process HAMRONIZE_RESFINDER_BWT {
 
     '''
     mv !{versions} metadata.yml
-    version=$(grep 'resfinder:' metadata.yml | awk '{print $NF}')
-    version_db=$(grep 'resfinder_db:' metadata.yml | awk '{print $NF}')
+    version=$(grep -A 1 'rgi_main:' metadata.yml | tail -n 1 | awk '{print $1}')
+    version_db=$(grep -A 1 'card:' metadata.yml | tail -n 1 | awk '{print $1}')
 
     hamronize resfinder !{tsv} --analysis_software_version $version --reference_database_version $version_db --input_file_name !{sample} --output !{sample}_harmonize_resfinder_bwt.tsv
 
