@@ -7,6 +7,7 @@ process CARD_READS {
         tuple val(db_name), path(db)
     output:
         path("./${sample}"), emit: results
+        tuple val(sample), path("./${sample}/${sample}_out.gene_mapping_data.txt"), path("versions.yml"), emit: for_hamr
         path("versions.yml"), emit: versions
 
     script:
