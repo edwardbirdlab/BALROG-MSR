@@ -1,5 +1,5 @@
 process SPADES_METAGENOME {
-    label 'medmem'
+    label 'bigmem'
     container 'ebird013/spades:3.15.5'
 
     input:
