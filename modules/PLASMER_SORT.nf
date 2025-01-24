@@ -1,5 +1,5 @@
 process PLASMER_SORT {
-    label 'lowmem'
+    label 'midmem'
     container 'ebird013/plasmer_sort:1.0'
 
 
