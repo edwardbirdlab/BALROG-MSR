@@ -18,7 +18,7 @@ process CARD_READS {
     rgi load --card_json ${db} --local
 
     rgi card_annotation -i ${db} > card_annotation.log 2>&1
-    rgi load -i ${db} --card_annotation card_database_v3.3.0.fasta --local
+    rgi load -i ${db} --card_annotation card_database_v4.0.0.fasta --local
 
     rgi bwt --read_one ${R1} --read_two ${R2} --output_file ./${sample}/${sample}_out --local --clean -a bowtie2 -n ${task.cpus}
 

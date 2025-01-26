@@ -13,5 +13,6 @@ process CARD_DB {
     tar -xvf data
     cp card.json ./localDB
     cp nucleotide_fasta_protein_homolog_model.fasta card_phm_nt_db.fasta
+    
     """
 }
