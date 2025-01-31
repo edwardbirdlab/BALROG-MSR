@@ -70,18 +70,19 @@ workflow PLASMID_PREDICTION {
             }
 
         PLASMER(assembly, ch_plasmer_db)
-        PLASMER_SORT(PLASMER.out.for_sort)
-        QUAST_PLASMID(PLASMER_SORT.out.plasmid)
-        QUAST_CHROMOSOMAL(PLASMER_SORT.out.chromosome)
-        QUAST_SHORT(PLASMER_SORT.out.tooshort)
+        //PLASMER_SORT(PLASMER.out.for_sort)
+        //QUAST_PLASMID(PLASMER_SORT.out.plasmid)
+        //QUAST_CHROMOSOMAL(PLASMER_SORT.out.chromosome)
+        //QUAST_SHORT(PLASMER_SORT.out.tooshort)
         //VIRSORTER2(PLASMER_SORT.out.all, ch_virsorter_db)
-        MEF(PLASMER_SORT.out.all)
+        MEF(Passembly)
         //VIRALVERIFY(PLASMER_SORT.out.plasmid, ch_viralverify_db)
 
     emit:
-        plasmids         =       PLASMER_SORT.out.plasmid        // tuple val(sample), path("*plasmid.fasta"), emit: plasmid
-        chromosomal      =       PLASMER_SORT.out.chromosome     // tuple val(sample), path("*chromosome.fasta"), emit: chromosome
-        too_short        =       PLASMER_SORT.out.tooshort       // tuple val(sample), path("*tooshort.fasta"), emit: tooshort
-        all              =       PLASMER_SORT.out.all            // tuple val(sample), path("*allclass.fasta"), emit: all
+        //plasmids         =       PLASMER_SORT.out.plasmid        // tuple val(sample), path("*plasmid.fasta"), emit: plasmid
+        //chromosomal      =       PLASMER_SORT.out.chromosome     // tuple val(sample), path("*chromosome.fasta"), emit: chromosome
+        //too_short        =       PLASMER_SORT.out.tooshort       // tuple val(sample), path("*tooshort.fasta"), emit: tooshort
+        //all              =       PLASMER_SORT.out.all            // tuple val(sample), path("*allclass.fasta"), emit: all
+        all              =       assembly                          // tuple val(sample), path("*allclass.fasta"), emit: all
 
 }
