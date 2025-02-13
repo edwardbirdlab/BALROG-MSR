@@ -1,5 +1,5 @@
 process RESFINDER {
-   label 'medmem'
+   label 'small'
     container 'ebird013/resfinder:4.4.2'
 
     input:
