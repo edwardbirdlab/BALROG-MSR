@@ -22,7 +22,7 @@ workflow SHORT_READ_METAGENOMIC {
 
     main:
 
-        MULTI_AMR(ch_genoems)    
+        PLASMID_PREDICTION(ch_genoems)    
 
 
 }
