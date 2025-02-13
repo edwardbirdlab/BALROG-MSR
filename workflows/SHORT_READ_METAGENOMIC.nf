@@ -18,27 +18,11 @@ include { MULTI_AMR as MULTI_AMR } from '../subworkflows/MULTI_AMR.nf'
 
 workflow SHORT_READ_METAGENOMIC {
     take:
-        fastqs_short_raw      //    channel: [val(sample), [fastq_1, fastq_2]]
-        host_gen_fasta        //    channel: channel: [val(sample), fasta]
+        ch_genoems      //    channel: [val(sample), [fastq_1, fastq_2]]
 
     main:
-        READ_QC_SR(fastqs_short_raw)
 
-        HOST_REMOVAL_SHORT_READ(READ_QC_SR.out.trimmed_fastq, host_gen_fasta)
-
-        METAGENOMIC_COMMUNITY_ANALYSIS_SR(HOST_REMOVAL_SHORT_READ.out.host_depleted_reads)
-
-//        PATHOGEN_DETECTION(HOST_REMOVAL_SHORT_READ.out.host_depleted_reads)
-
-        SHORT_READ_META_ASSEMBLY(HOST_REMOVAL_SHORT_READ.out.host_depleted_reads)
-        
-        PLASMID_PREDICTION(SHORT_READ_META_ASSEMBLY.out.unclassed_genome)
-
-//        ASSEMBLY_QC(PLASMID_PREDICTION.out.all, READ_QC.out.trimmed_fastq)
-
-        CARD_READS_ONLY(HOST_REMOVAL_SHORT_READ.out.host_depleted_reads)
-
-        MULTI_AMR(PLASMID_PREDICTION.out.all)    
+        MULTI_AMR(ch_genoems)    
 
 
 }

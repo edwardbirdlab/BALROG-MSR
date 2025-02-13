@@ -50,15 +50,9 @@ nextflow.enable.dsl=2
 
 if (params.workflow_opt == 'shortread_meta') {
 
-    ch_fastq = Channel.fromPath(params.sample_sheet) \
+    ch_genome = Channel.fromPath(params.sample_sheet) \
         | splitCsv(header:true) \
-        | map { row-> tuple(row.sample, file(row.r1), file(row.r2)) }
-
-    ch_hostgen = Channel.fromPath(params.sample_sheet) \
-        | splitCsv(header:true) \
-        | map { row-> tuple(row.sample, file(row.refernce_genome)) }
-
-    }
+        | map { row-> tuple(row.sample, file(row.genome) }
 
 if (params.workflow_opt == 'sr_qc_only') {
 
@@ -78,7 +72,7 @@ workflow {
 
     if (params.workflow_opt == 'shortread_meta') {
 
-        SHORT_READ_METAGENOMIC(ch_fastq, ch_hostgen)
+        SHORT_READ_METAGENOMIC(ch_genome)
 
         }
 
