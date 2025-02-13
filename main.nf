@@ -52,7 +52,7 @@ if (params.workflow_opt == 'shortread_meta') {
 
     ch_genome = Channel.fromPath(params.sample_sheet) \
         | splitCsv(header:true) \
-        | map { row-> tuple(row.sample, file(row.genome) }
+        | map { row-> tuple(row.sample, file(row.fasta) }
 
 if (params.workflow_opt == 'sr_qc_only') {
 
