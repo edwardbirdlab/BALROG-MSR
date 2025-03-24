@@ -1,5 +1,5 @@
 process AMRFINDER {
-   label 'midmem'
+   label 'lowmemnk'
     container 'ncbi/amr:latest'
 
     input:

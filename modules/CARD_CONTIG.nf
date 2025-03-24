@@ -1,5 +1,5 @@
 process CARD_CONTIG {
-   label 'midmem'
+   label 'lowmemlong'
     container 'ebird013/rgi:6.0.3'
 
     input:
