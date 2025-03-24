@@ -86,7 +86,7 @@ workflow PLASMID_PREDICTION {
             .groupTuple()
             .collectFile(
                 name: { sample, _ -> "${sample}_too_short.fasta" },
-                storeDir: "${project_name}/SHORT_READ_METAGENOMIC/PLASMID_PREDICTION/PLASMER_MERGE",
+                storeDir: "${params.project_name}/SHORT_READ_METAGENOMIC/PLASMID_PREDICTION/PLASMER_MERGE",
                 sort: true
             )
 
@@ -95,7 +95,7 @@ workflow PLASMID_PREDICTION {
             .groupTuple()
             .collectFile(
                 name: { sample, _ -> "${sample}_plasmids.fasta" },
-                storeDir: "${project_name}/SHORT_READ_METAGENOMIC/PLASMID_PREDICTION/PLASMER_MERGE",
+                storeDir: "${params.project_name}/SHORT_READ_METAGENOMIC/PLASMID_PREDICTION/PLASMER_MERGE",
                 sort: true
             )
 
@@ -105,7 +105,7 @@ workflow PLASMID_PREDICTION {
             .groupTuple()
             .collectFile(
                 name: { sample, _ -> "${sample}_plasmer_class.tsv" },
-                storeDir: "${project_name}/SHORT_READ_METAGENOMIC/PLASMID_PREDICTION/PLASMER_MERGE",
+                storeDir: "${params.project_name}/SHORT_READ_METAGENOMIC/PLASMID_PREDICTION/PLASMER_MERGE",
                 sort: true
             ) { sample, files ->
                 files.collect { it.text }.join('\n')
@@ -116,7 +116,7 @@ workflow PLASMID_PREDICTION {
             .groupTuple()
             .collectFile(
                 name: { sample, _ -> "${sample}_plasmer_taxon.tsv" },
-                storeDir: "${project_name}/SHORT_READ_METAGENOMIC/PLASMID_PREDICTION/PLASMER_MERGE",
+                storeDir: "${params.project_name}/SHORT_READ_METAGENOMIC/PLASMID_PREDICTION/PLASMER_MERGE",
                 sort: true
             ) { sample, files ->
                 files.collect { it.text }.join('\n')
@@ -128,7 +128,7 @@ workflow PLASMID_PREDICTION {
             .groupTuple()
             .collectFile(
                 name: { sample, _ -> "${sample}_class_prob.tsv" },
-                storeDir: "${project_name}/SHORT_READ_METAGENOMIC/PLASMID_PREDICTION/PLASMER_MERGE",
+                storeDir: "${params.project_name}/SHORT_READ_METAGENOMIC/PLASMID_PREDICTION/PLASMER_MERGE",
                 sort: true
             ) { sample, files ->
                 def allLines = files.collectMany { it.readLines() }
