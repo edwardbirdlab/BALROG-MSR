@@ -11,7 +11,6 @@ process PLASMER {
         tuple val(sample), path("*.predClass.tsv"), emit: pred_class
         tuple val(sample), path("*.predProb.tsv"), emit: probability
         tuple val(sample), path("*.predPlasmids.taxon"), emit: pred_taxon, optional: true
-        tuple val(sample), path("*.predClass.tsv"),  path("*.predProb.tsv"), path("${fasta}"), emit: for_sort
 
         
     script:
