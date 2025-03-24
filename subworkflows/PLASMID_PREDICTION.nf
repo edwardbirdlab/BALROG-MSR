@@ -70,8 +70,7 @@ workflow PLASMID_PREDICTION {
             }
 
         //Splitting large assemblies
-        Channel
-            .from(assembly)
+        assembly
             .flatMap { sample, fasta ->
                 fasta.splitFasta(by: params.chunksize, file: true).map { split ->
                     tuple(sample, split)
