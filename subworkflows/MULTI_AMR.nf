@@ -46,7 +46,7 @@ workflow MULTI_AMR {
 
             AMRFINDER_DB()
 
-            //ch_amrfinder_db        =  AMRFINDER_DB.out.amrfinder_db
+            ch_amrfinder_db        =  AMRFINDER_DB.out.amrfinder_db
 
             } else {
 
