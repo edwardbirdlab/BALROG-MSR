@@ -10,8 +10,6 @@ process AMRFINDER_DB {
     script:
 
     """
-    mkdir tmp
-    export TMPDIR=./tmp
     amrfinder_update -d amrfinder_db_down
     """
 }
