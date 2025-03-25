@@ -36,7 +36,7 @@ workflow MULTI_AMR {
 
             } else {
 
-                ch_resfinder_db    =  Channel.fromPath("${params.database_dir}/Resfinder/*.fasta")
+                ch_resfinder_db    =  Channel.fromPath("${params.database_dir}/Resfinder/db_resfinder")
 
             }
 
@@ -50,7 +50,7 @@ workflow MULTI_AMR {
 
             } else {
 
-                ch_amrfinder_db    =  Channel.fromPath("${params.database_dir}/AMRFinder/*.fasta")
+                ch_amrfinder_db    =  Channel.fromPath("${params.database_dir}/AMRFinder/amrfinder_db_down")
 
             }
 
@@ -64,7 +64,7 @@ workflow MULTI_AMR {
 
             } else {
 
-                ch_card_db    =  Channel.fromPath("${params.database_dir}/CARD/*.fasta")
+                ch_card_db    =  Channel.fromPath("${params.database_dir}/CARD/card.json")
 
             }
 
