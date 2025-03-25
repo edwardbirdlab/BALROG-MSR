@@ -36,7 +36,7 @@ workflow PLASMID_PREDICTION {
 
             } else {
 
-                ch_plasmer_db   =  Channel.fromPath("${params.database_dir}/Plasmer/*.Kraken2DB.tar.xz","${params.database_dir}/Plasmer/*.MainDB.tar.xz")
+                ch_plasmer_db = Channel.fromPath("${params.database_dir}/Plasmer/*.Kraken2DB.tar.xz").mix(Channel.fromPath("${params.database_dir}/Plasmer/*.MainDB.tar.xz"))
 
             }
 

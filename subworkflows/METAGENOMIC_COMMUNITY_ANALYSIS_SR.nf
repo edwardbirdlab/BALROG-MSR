@@ -33,7 +33,7 @@ workflow METAGENOMIC_COMMUNITY_ANALYSIS_SR {
 
             } else {
 
-                ch_kraken2_pluspf_db    =  Channel.fromPath("${params.database_dir}/Kraken2_PlusPF_db/*.txt","${params.database_dir}/Kraken2_PlusPF_db/*tar.gz")
+                ch_kraken2_pluspf_db    =  Channel.fromPath("${params.database_dir}/Kraken2_PlusPF_db/*.txt").mix(Channel.fromPath("${params.database_dir}/Kraken2_PlusPF_db/*.tar.gz"))
 
             }
 
