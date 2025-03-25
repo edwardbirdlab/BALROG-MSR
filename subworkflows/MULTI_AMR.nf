@@ -7,7 +7,7 @@ Subworkflow for doanloading of mutiple AMR databases
 include { RESFINDER_DB as RESFINDER_DB } from '../modules/RESFINDER_DB.nf'
 include { AMRFINDER_DB as AMRFINDER_DB } from '../modules/AMRFINDER_DB.nf'
 include { CARD_DB as CARD_DB } from '../modules/CARD_DB.nf'
-include { AMRFINDER as AMRFINDER } from '../modules/AMRFINDER.nf'
+include { AMRFINDER_NOUPDATE as AMRFINDER } from '../modules/AMRFINDER.nf'
 include { CARD_CONTIG as CARD_CONTIG } from '../modules/CARD_CONTIG.nf'
 include { RESFINDER as RESFINDER } from '../modules/RESFINDER.nf'
 include { AMRFINDER_PARSE as AMRFINDER_PARSE } from '../modules/AMRFINDER_PARSE.nf'
@@ -50,7 +50,7 @@ workflow MULTI_AMR {
 
             } else {
 
-                ch_amrfinder_db    =  Channel.fromPath("${params.database_dir}/AMRFinder/*.fasta")
+                //ch_amrfinder_db    =  Channel.fromPath("${params.database_dir}/AMRFinder/*.fasta")
 
             }
 
@@ -71,7 +71,7 @@ workflow MULTI_AMR {
 
 
         CARD_CONTIG(seqs, ch_card_db)
-        AMRFINDER(seqs, ch_amrfinder_db)
+        AMRFINDER(seqs)
         RESFINDER(seqs, ch_resfinder_db)
 
         HAMRONIZE_AMRFINDER(AMRFINDER.out.for_hamr)
