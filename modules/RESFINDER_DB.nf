@@ -1,5 +1,5 @@
 process RESFINDER_DB {
-    label 'small'
+    label 'internet'
     container 'genomicepidemiology/resfinder:latest'
 
     output:

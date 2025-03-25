@@ -1,5 +1,5 @@
 process CARD_DB {
-    label 'small'
+    label 'internet'
 
     output:
         tuple val('card'), path("card.json"), emit: card_DB

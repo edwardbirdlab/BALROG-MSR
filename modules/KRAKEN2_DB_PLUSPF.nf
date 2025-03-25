@@ -1,5 +1,5 @@
 process KRAKEN2_DB_PLUSPF {
-    label 'small'
+    label 'internet'
     output:
         tuple path("inspect.txt"), path('k2_pluspf_20231009.tar.gz'), emit: kraken2_DB
         path("library_report.tsv"), emit: lib_report

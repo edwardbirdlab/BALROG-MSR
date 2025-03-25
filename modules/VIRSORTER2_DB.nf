@@ -1,5 +1,5 @@
 process VIRSORTER2_DB {
-    label 'lowmem'
+    label 'internet'
     container 'ebird013/virsorter2:2.2.4'
 
     output:
