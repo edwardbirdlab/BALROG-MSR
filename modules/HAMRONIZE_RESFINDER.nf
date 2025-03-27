@@ -1,9 +1,9 @@
 process HAMRONIZE_RESFINDER {
    label 'lowmemnk'
-    container 'ebird013/harmonization:1.0.2'
+    container 'ebird013/hamronization:1.1.8'
 
     input:
-        tuple val(sample), file(tsv), file(versions)
+        tuple val(sample), file(json), file(versions)
 
     output:
         tuple val(sample), path("./${sample}_harmonize_resfinder.tsv"), emit: tsv
@@ -17,7 +17,9 @@ process HAMRONIZE_RESFINDER {
     version=$(grep 'resfinder:' metadata.yml | awk -F' ' '{print $2}')
     version_db=$(grep 'resfinder_db:' metadata.yml | awk -F' ' '{print $2}')
 
-    hamronize resfinder !{tsv} --analysis_software_version $version --reference_database_version $version_db --input_file_name !{sample} --output !{sample}_harmonize_resfinder.tsv
+    mv !{json} !{sample}.json
+
+    hamronize resfinder !{sample}.json --output !{sample}_harmonize_resfinder.tsv
 
     cat <<-END_VERSIONS > versions.yml
     "!{task.process}":
