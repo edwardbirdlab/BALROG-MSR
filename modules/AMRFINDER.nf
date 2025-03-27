@@ -15,6 +15,7 @@ process AMRFINDER {
     """
     mkdir tmpamr
     TMPDIR="./tmpamr"
+    ls ${db}
     amrfinder -d ${db}/latest -n ${fasta} --plus -o ${sample}_AMRFinder.tsv
 
     cat <<-END_VERSIONS > versions.yml
