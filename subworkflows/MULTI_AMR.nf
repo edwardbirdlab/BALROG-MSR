@@ -50,7 +50,7 @@ workflow MULTI_AMR {
 
             } else {
 
-                ch_amrfinder_db    =  Channel.of("${params.database_dir}/AMRFinder/*.tar.gz")
+                ch_amrfinder_db    =  Channel.fromPath("${params.database_dir}/AMRFinder/*.tar.gz")
 
             }
 
