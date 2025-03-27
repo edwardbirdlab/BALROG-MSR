@@ -66,8 +66,6 @@ workflow MULTI_AMR {
 
                 ch_card_db    =  Channel.fromPath("${params.database_dir}/CARD/card.json")
 
-                ch_card_db.view()
-
             }
 
 

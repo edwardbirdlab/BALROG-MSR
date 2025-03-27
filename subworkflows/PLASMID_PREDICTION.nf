@@ -75,8 +75,6 @@ workflow PLASMID_PREDICTION {
                 fasta.splitFasta(by: params.chunksize, file: true).collect { sequence -> [sample, sequence] }
             }
 
-        ch_assembly_chunks.view()
-
         PLASMER(ch_assembly_chunks, ch_plasmer_db)
 
         // Group Fasta Files
