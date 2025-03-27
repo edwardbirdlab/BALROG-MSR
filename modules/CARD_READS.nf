@@ -4,7 +4,7 @@ process CARD_READS {
 
     input:
         tuple val(sample), file(R1), file(R2)
-        tuple val(db_name), path(db)
+        path(db)
     output:
         path("./${sample}"), emit: results
         tuple val(sample), path("./${sample}/${sample}_out.gene_mapping_data.txt"), path("versions.yml"), emit: for_hamr

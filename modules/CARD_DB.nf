@@ -2,7 +2,7 @@ process CARD_DB {
     label 'internet'
 
     output:
-        tuple val('card'), path("card.json"), emit: card_DB
+        path("card.json"), emit: card_DB
 
 
     script:

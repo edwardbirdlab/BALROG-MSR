@@ -4,7 +4,7 @@ process CARD_CONTIG {
 
     input:
         tuple val(sample), file(fasta)
-        tuple val(db_name), path(db)
+        path(db)
     output:
         path("./${sample}"), emit: results
         path("./${sample}/${sample}_out.txt"), emit: tbout
