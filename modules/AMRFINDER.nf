@@ -13,8 +13,9 @@ process AMRFINDER {
     script:
 
     """
+    cp ${db} database.tar.gz
     mkdir amrfinderdb
-    tar -xvzf ${db} -C amrfinderdb
+    tar -xvzf database.tar.gz -C amrfinderdb
     mkdir tmpamr
     TMPDIR="./tmpamr"
     amrfinder -d amrfinderdb/latest -n ${fasta} --plus -o ${sample}_AMRFinder.tsv
