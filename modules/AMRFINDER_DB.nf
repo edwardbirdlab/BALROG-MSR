@@ -5,7 +5,7 @@ process AMRFINDER_DB {
     input:
 
     output:
-        path("amrfinder_db_down/"), emit: amrfinder_db
+        path("amrfinder_db_down.tar.gz"), emit: amrfinder_db
 
     script:
 
@@ -13,5 +13,6 @@ process AMRFINDER_DB {
     mkdir tmp
     export TMPDIR=./tmp
     amrfinder_update -d amrfinder_db_down
+    tar czf amrfinder_db_down.tar.gz amrfinder_db_down
     """
 }

@@ -13,10 +13,11 @@ process AMRFINDER {
     script:
 
     """
+    mkdir amrfinderdb
+    tar -xvzf ${db} -C amrfinderdb
     mkdir tmpamr
     TMPDIR="./tmpamr"
-    ls ${db}
-    amrfinder -d ${db}/latest -n ${fasta} --plus -o ${sample}_AMRFinder.tsv
+    amrfinder -d amrfinderdb/latest -n ${fasta} --plus -o ${sample}_AMRFinder.tsv
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
