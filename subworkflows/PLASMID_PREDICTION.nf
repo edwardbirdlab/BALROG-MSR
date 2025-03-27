@@ -72,7 +72,7 @@ workflow PLASMID_PREDICTION {
         //Splitting large assemblies
         ch_assembly_chunks = assembly
             .flatMap { sample, fasta ->
-                fasta.splitFasta(by: params.chunksize, file: true).map { sequence -> [sample, sequence] }
+                fasta.splitFasta(by: params.chunksize, file: true).collect { sequence -> [sample, sequence] }
             }
 
         ch_assembly_chunks.view()
