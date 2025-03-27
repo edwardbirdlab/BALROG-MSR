@@ -47,11 +47,11 @@ workflow PLASMID_PREDICTION {
 
             PFAM_DB()
 
-            ch_viralverify_db        =  PFAM_DB.out.pfam_DB
+            //ch_viralverify_db        =  PFAM_DB.out.pfam_DB
 
             } else {
 
-                ch_viralverify_db    =  Channel.fromPath("${params.database_dir}/Kraken2/*.hmm")
+                //ch_viralverify_db    =  Channel.fromPath("${params.database_dir}/Kraken2/*.hmm")
 
             }
 
