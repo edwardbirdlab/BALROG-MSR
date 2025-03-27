@@ -27,7 +27,7 @@ workflow CARD_READS_ONLY {
 
             } else {
 
-                ch_card_db    =  Channel.fromPath("${params.database_dir}/CARD/*.fasta")
+                ch_card_db    =  Channel.fromPath("${params.database_dir}/CARD/card.json")
 
             }
 
