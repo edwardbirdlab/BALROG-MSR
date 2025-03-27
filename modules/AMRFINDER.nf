@@ -4,7 +4,7 @@ process AMRFINDER {
 
     input:
         tuple val(sample), file(fasta)
-        val(db)
+        file(db)
     output:
         path("./${sample}_AMRFinder.tsv"), emit: amrfinder_results
         tuple val(sample), path("./${sample}_AMRFinder.tsv"), path("versions.yml"), emit: for_hamr
