@@ -121,17 +121,18 @@ workflow PLASMID_PREDICTION {
 
         // Merging TSVs with header
         ch_merged_probability = PLASMER.out.probability
-            .collect()
+            .map { sample, file -> tuple(sample, file) }
             .groupTuple()
-            .collectFile(
-                name: { sample, _ -> "${sample}_class_prob.tsv" },
-                storeDir: "${params.project_name}/SHORT_READ_METAGENOMIC/PLASMID_PREDICTION/PLASMER_MERGE",
-                sort: true
-            ) { sample, files ->
-                def allLines = files.collectMany { it.readLines() }
-                def header = allLines.head()
-                def content = allLines.tail().findAll { it != header }
-                ([header] + content).join('\n')
+            .map { sample, files ->
+                def allLines = files.collect { it.readLines() }.flatten()
+                def header = allLines.find { it.startsWith("#") } // Assuming the header starts with #
+                def content = allLines.findAll { !it.startsWith("chromosome") }
+                tuple(sample, header, content)
+            }
+            .map { sample, header, content ->
+                def outputFile = file("${params.project_name}/SHORT_READ_METAGENOMIC/PLASMID_PREDICTION/PLASMER_MERGE/${sample}_class_prob.tsv")
+                outputFile.text = header + "\n" + content.join("\n")
+                return outputFile
             }
 
 
