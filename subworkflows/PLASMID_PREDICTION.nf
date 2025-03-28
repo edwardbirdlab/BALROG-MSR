@@ -79,13 +79,13 @@ workflow PLASMID_PREDICTION {
 
         // Group Fasta Files
         ch_merged_too_short = PLASMER.out.too_short
-            .collect()
+            .map { sample, file -> tuple(sample, file) }
             .groupTuple()
-            .collectFile(
-                name: { sample, _ -> "${sample}_too_short.fasta" },
-                storeDir: "${params.project_name}/SHORT_READ_METAGENOMIC/PLASMID_PREDICTION/PLASMER_MERGE",
-                sort: true
-            )
+            .map { sample, files ->
+                def outputFile = file("${params.project_name}/SHORT_READ_METAGENOMIC/PLASMID_PREDICTION/PLASMER_MERGE/${sample}_too_short.fasta")
+                outputFile.text = files.collect { it.text }.join('\n')
+                return outputFile
+            }
 
         ch_merged_pred_plasmids = PLASMER.out.pred_plasmids
             .collect()
