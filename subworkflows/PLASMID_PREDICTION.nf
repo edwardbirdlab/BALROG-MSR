@@ -98,25 +98,21 @@ workflow PLASMID_PREDICTION {
 
         // Merging TSVs with no header
         ch_merged_pred_class = PLASMER.out.pred_class
-            .collect()
+            .map { sample, file -> tuple(sample, file) }
             .groupTuple()
-            .collectFile(
-                name: { sample, _ -> "${sample}_plasmer_class.tsv" },
-                storeDir: "${params.project_name}/SHORT_READ_METAGENOMIC/PLASMID_PREDICTION/PLASMER_MERGE",
-                sort: true
-            ) { sample, files ->
-                files.collect { it.text }.join('\n')
+            .map { sample, files ->
+                def outputFile = file("${params.project_name}/SHORT_READ_METAGENOMIC/PLASMID_PREDICTION/PLASMER_MERGE/${sample}_plasmer_class.tsv")
+                outputFile.text = files.collect { it.text }.join('\n')
+                return outputFile
             }
 
         ch_merged_pred_taxon = PLASMER.out.pred_taxon
-            .collect()
+            .map { sample, file -> tuple(sample, file) }
             .groupTuple()
-            .collectFile(
-                name: { sample, _ -> "${sample}_plasmer_taxon.tsv" },
-                storeDir: "${params.project_name}/SHORT_READ_METAGENOMIC/PLASMID_PREDICTION/PLASMER_MERGE",
-                sort: true
-            ) { sample, files ->
-                files.collect { it.text }.join('\n')
+            .map { sample, files ->
+                def outputFile = file("${params.project_name}/SHORT_READ_METAGENOMIC/PLASMID_PREDICTION/PLASMER_MERGE/${sample}_plasmer_taxon.tsv")
+                outputFile.text = files.collect { it.text }.join('\n')
+                return outputFile
             }
 
         // Merging TSVs with header
