@@ -39,7 +39,7 @@ workflow SHORT_READ_META_ASSEMBLY {
         //Quast report of genome
         QUAST_GENOME(SPADES_METAGENOME.out.metagenome)
 
-        KRAKEN2_PLUSPF_PE(SPADES_METAGENOME.out.metagenome, ch_kraken2_pluspf_db)
+        KRAKEN2_PLUSPF_FA(SPADES_METAGENOME.out.metagenome, ch_kraken2_pluspf_db)
 
 
     emit:
