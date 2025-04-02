@@ -1,4 +1,4 @@
-process KRAKEN2_PLUSPF_PE {
+process KRAKEN2_PLUSPF_FA {
     label 'kracken2_PlusPF'
 	container 'ebird013/kracken2:2.1.3'
 
